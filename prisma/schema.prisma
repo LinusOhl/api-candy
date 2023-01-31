@@ -15,7 +15,7 @@ model Product {
   images        Json
   stockStatus   String
   stockQuantity Int
-  onSale        Boolean      @default(false)
+  onSale        Boolean?     @default(false)
   OrderItems    OrderItems[]
 }
 
@@ -33,11 +33,11 @@ model Order {
 }
 
 model OrderItems {
-  productId  Int     @unique @db.UnsignedInt
-  orderId    Int     @unique @db.UnsignedInt
-  qty        Int
-  item_price Int
-  item_total Int
-  Product    Product @relation(fields: [productId], references: [id])
-  Order      Order   @relation(fields: [orderId], references: [id])
+  productId Int     @unique @db.UnsignedInt
+  orderId   Int     @unique @db.UnsignedInt
+  qty       Int
+  itemPrice Int
+  itemTotal Int
+  Product   Product @relation(fields: [productId], references: [id])
+  Order     Order   @relation(fields: [orderId], references: [id])
 }
