@@ -22,7 +22,7 @@ export const index = async (req: Request, res: Response) => {
       data: products,
     });
   } catch (err) {
-    debug("Error thrown when finding books", err);
+    debug("Error thrown when finding products", err);
     res.status(500).send({
       status: "error",
       message: "Something went wrong",
@@ -48,7 +48,7 @@ export const show = async (req: Request, res: Response) => {
     });
   } catch (err) {
     debug(
-      "Error thrown when finding book with id: %o",
+      "Error thrown when finding product with id: %o",
       req.params.productId,
       err
     );
@@ -78,8 +78,8 @@ export const store = async (req: Request, res: Response) => {
         description: req.body.description,
         price: req.body.price,
         images: {
-          thumbnail: req.body.thumbnail,
-          large: req.body.large,
+          thumbnail: req.body.images.thumbnail,
+          large: req.body.images.large,
         },
         stockStatus: req.body.stockStatus,
         stockQuantity: req.body.stockQuantity,
