@@ -7,18 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Product {
-  id            Int          @id @default(autoincrement()) @db.UnsignedInt
-  name          String
-  description   String       @db.Text
-  price         Int
-  images        Json
-  stockStatus   String
-  stockQuantity Int
-  onSale        Boolean?     @default(false)
-  OrderItems    OrderItems[]
-}
-
 model Order {
   id                Int          @id @default(autoincrement()) @db.UnsignedInt
   customerFirstName String
@@ -33,11 +21,24 @@ model Order {
 }
 
 model OrderItems {
-  productId Int     @unique @db.UnsignedInt
-  orderId   Int     @unique @db.UnsignedInt
+  id        Int     @id @default(autoincrement()) @db.UnsignedInt
   qty       Int
   itemPrice Int
   itemTotal Int
-  Product   Product @relation(fields: [productId], references: [id])
   Order     Order   @relation(fields: [orderId], references: [id])
+  Product   Product @relation(fields: [productId], references: [id])
+  productId Int     @db.UnsignedInt
+  orderId   Int     @db.UnsignedInt
+}
+
+model Product {
+  id            Int          @id @default(autoincrement()) @db.UnsignedInt
+  name          String
+  description   String       @db.Text
+  price         Int
+  images        Json
+  stockStatus   String
+  stockQuantity Int
+  onSale        Boolean?     @default(false)
+  OrderItems    OrderItems[]
 }
