@@ -22,37 +22,37 @@ router.get("/:orderId", show);
 router.post(
   "/",
   [
-    body("customerFirstName")
+    body("customer_first_name")
       .isString()
       .isLength({ min: 2 })
       .withMessage("Has to be a string and atleast 2 characters long."),
-    body("customerLastName")
+    body("customer_last_name")
       .isString()
       .isLength({ min: 2 })
       .withMessage("Has to be a string and atleast 2 characters long."),
-    body("customerAddress")
+    body("customer_address")
       .isString()
       .isLength({ min: 4 })
       .withMessage("Has to be a string and atleast 4 characters long."),
-    body("customerPostcode")
+    body("customer_postcode")
       .isString()
       .isLength({ max: 6 })
       .withMessage("Has to be a string and 6 characters long."),
-    body("customerCity")
+    body("customer_city")
       .isString()
       .isLength({ min: 2 })
       .withMessage("Has to be a string and atleast 2 characters long."),
-    body("customerEmail").isEmail().withMessage("Has to be a valid email."),
-    body("customerPhone")
+    body("customer_email").isEmail().withMessage("Has to be a valid email."),
+    body("customer_phone")
       .optional()
       .isString()
       .isLength({ min: 6 })
       .withMessage("Has to be a string and atleast 6 characters long."),
-    body("orderTotal")
+    body("order_total")
       .isInt()
       .isLength({ min: 1 })
       .withMessage("Has to be an int and atleast 1."),
-    body("items.*.productId")
+    body("items.*.product_id")
       .isInt()
       .isLength({ min: 1 })
       .withMessage("Has to be an int and atleast 1."),
@@ -60,11 +60,11 @@ router.post(
       .isInt()
       .isLength({ min: 1 })
       .withMessage("Has to be an int and atleast 1."),
-    body("items.*.itemPrice")
+    body("items.*.item_price")
       .isInt()
       .isLength({ min: 1 })
       .withMessage("Has to be an int and atleast 1."),
-    body("items.*.itemTotal")
+    body("items.*.item_total")
       .isInt()
       .isLength({ min: 1 })
       .withMessage("Has to be an int and atleast 1."),

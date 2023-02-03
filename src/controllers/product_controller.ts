@@ -81,9 +81,9 @@ export const store = async (req: Request, res: Response) => {
           thumbnail: req.body.images.thumbnail,
           large: req.body.images.large,
         },
-        stockStatus: req.body.stockStatus,
-        stockQuantity: req.body.stockQuantity,
-        onSale: req.body.onSale,
+        stock_status: req.body.stock_status,
+        stock_quantity: req.body.stock_quantity,
+        on_sale: req.body.on_sale,
       },
     });
     res.send({

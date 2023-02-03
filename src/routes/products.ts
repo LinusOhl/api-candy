@@ -40,14 +40,14 @@ router.post(
     body("images")
       .isObject()
       .withMessage("Has to be an object with values 'thumbnail' & 'large'."),
-    body("stockStatus")
+    body("stock_status")
       .isIn(["instock", "outofstock"])
       .withMessage("Has to be either 'instock' or 'outofstock'."),
-    body("stockQuantity")
+    body("stock_quantity")
       .isInt({ min: 0 })
       .withMessage("Has to be an int, value atleast: 0."),
-    body("onSale")
-      .if(body("onSale").exists())
+    body("on_sale")
+      .optional()
       .isBoolean()
       .withMessage("Has to be either 'true' or 'false'."),
   ],
