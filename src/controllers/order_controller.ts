@@ -78,14 +78,14 @@ export const store = async (req: Request, res: Response) => {
   try {
     const orderAndOrderItems = await prisma.order.create({
       data: {
-        customerFirstName: req.body.customerFirstName,
-        customerLastName: req.body.customerLastName,
-        customerAddress: req.body.customerAddress,
-        customerPostcode: req.body.customerPostcode,
-        customerCity: req.body.customerCity,
-        customerEmail: req.body.customerEmail,
-        customerPhone: req.body.customerPhone,
-        orderTotal: req.body.orderTotal,
+        customer_first_name: req.body.customer_first_name,
+        customer_last_name: req.body.customer_last_name,
+        customer_address: req.body.customer_address,
+        customer_postcode: req.body.customer_postcode,
+        customer_city: req.body.customer_city,
+        customer_email: req.body.customer_email,
+        customer_phone: req.body.customer_phone,
+        order_total: req.body.order_total,
         OrderItems: {
           createMany: {
             data: products,
