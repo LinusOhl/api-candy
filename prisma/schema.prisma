@@ -8,37 +8,37 @@ datasource db {
 }
 
 model Order {
-  id                Int          @id @default(autoincrement()) @db.UnsignedInt
-  customerFirstName String
-  customerLastName  String
-  customerAddress   String
-  customerPostcode  String
-  customerCity      String
-  customerEmail     String
-  customerPhone     String?
-  orderTotal        Int
-  OrderItems        OrderItems[]
+  id                  Int          @id @default(autoincrement()) @db.UnsignedInt
+  customer_first_name String
+  customer_last_name  String
+  customer_address    String
+  customer_postcode   String
+  customer_city       String
+  customer_email      String
+  customer_phone      String?
+  order_total         Int
+  OrderItems          OrderItems[]
 }
 
 model OrderItems {
-  id        Int     @id @default(autoincrement()) @db.UnsignedInt
-  qty       Int
-  itemPrice Int
-  itemTotal Int
-  Order     Order   @relation(fields: [orderId], references: [id])
-  Product   Product @relation(fields: [productId], references: [id])
-  productId Int     @db.UnsignedInt
-  orderId   Int     @db.UnsignedInt
+  id         Int     @id @default(autoincrement()) @db.UnsignedInt
+  qty        Int
+  item_price Int
+  item_total Int
+  Order      Order   @relation(fields: [order_id], references: [id])
+  Product    Product @relation(fields: [product_id], references: [id])
+  product_id Int     @db.UnsignedInt
+  order_id   Int     @db.UnsignedInt
 }
 
 model Product {
-  id            Int          @id @default(autoincrement()) @db.UnsignedInt
-  name          String
-  description   String       @db.Text
-  price         Int
-  images        Json
-  stockStatus   String
-  stockQuantity Int
-  onSale        Boolean?     @default(false)
-  OrderItems    OrderItems[]
+  id             Int          @id @default(autoincrement()) @db.UnsignedInt
+  name           String
+  description    String       @db.Text
+  price          Int
+  images         Json
+  stock_status   String
+  stock_quantity Int
+  on_sale        Boolean?     @default(false)
+  OrderItems     OrderItems[]
 }
