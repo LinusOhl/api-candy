@@ -66,6 +66,7 @@ export const show = async (req: Request, res: Response) => {
  * Create a order
  */
 export const store = async (req: Request, res: Response) => {
+  const products = req.body.items;
   try {
     const orderAndOrderItems = await prisma.order.create({
       data: {
@@ -78,11 +79,8 @@ export const store = async (req: Request, res: Response) => {
         customerPhone: req.body.customerPhone,
         orderTotal: req.body.orderTotal,
         OrderItems: {
-          create: {
-            productId: 1,
-            qty: 4,
-            itemPrice: 5,
-            itemTotal: 20,
+          createMany: {
+            data: products,
           },
         },
       },
@@ -96,7 +94,11 @@ export const store = async (req: Request, res: Response) => {
       data: orderAndOrderItems,
     });
   } catch (err) {
-    debug("Error thrown when creating an order %o", req.body, err);
+    debug(
+      "Error thrown when creating an order %o",
+      req.body.items.productId,
+      err
+    );
     res.status(500).send({
       status: "error",
       message: "Something went wrong",
