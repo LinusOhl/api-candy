@@ -74,7 +74,7 @@ export const store = async (req: Request, res: Response) => {
     });
   }
 
-  const products = req.body.items;
+  const products = req.body.order_items;
   try {
     const orderAndOrderItems = await prisma.order.create({
       data: {
@@ -104,7 +104,7 @@ export const store = async (req: Request, res: Response) => {
   } catch (err) {
     debug(
       "Error thrown when creating an order %o",
-      req.body.items.productId,
+      req.body.order_items.product_id,
       err
     );
     res.status(500).send({
