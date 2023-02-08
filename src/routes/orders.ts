@@ -49,24 +49,19 @@ router.post(
       .isLength({ min: 6 })
       .withMessage("Has to be a string and atleast 6 characters long."),
     body("order_total")
-      .isInt()
-      .isLength({ min: 1 })
+      .isInt({ min: 1 })
       .withMessage("Has to be an int and atleast 1."),
     body("items.*.product_id")
-      .isInt()
-      .isLength({ min: 1 })
+      .isInt({ min: 1 })
       .withMessage("Has to be an int and atleast 1."),
     body("items.*.qty")
-      .isInt()
-      .isLength({ min: 1 })
+      .isInt({ min: 1 })
       .withMessage("Has to be an int and atleast 1."),
     body("items.*.item_price")
-      .isInt()
-      .isLength({ min: 1 })
+      .isInt({ min: 1 })
       .withMessage("Has to be an int and atleast 1."),
     body("items.*.item_total")
-      .isInt()
-      .isLength({ min: 1 })
+      .isInt({ min: 1 })
       .withMessage("Has to be an int and atleast 1."),
   ],
   store
